@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" fx:controller="controlador.Controlador" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+    <left>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #3F2863;" BorderPane.alignment="CENTER" />
+    </left>
+    <center>
+        <AnchorPane prefHeight="400.0" prefWidth="532.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="25.0" layoutY="79.0" text="Artículo">
+                    <font>
+                        <Font name="System Bold" size="13.0" />
+                    </font>
+                </Label>
+                <Label layoutX="24.0" layoutY="110.0" text="Email del cliente">
+                    <font>
+                        <Font name="System Bold" size="13.0" />
+                    </font>
+                </Label>
+                <Label layoutX="24.0" layoutY="141.0" text="Cantidad de artículos">
+                    <font>
+                        <Font name="System Bold" size="13.0" />
+                    </font>
+                </Label>
+                <Button layoutX="63.0" layoutY="304.0" mnemonicParsing="false" text="Aceptar" />
+                <Button layoutX="276.0" layoutY="304.0" mnemonicParsing="false" text="Volver" />
+                <Label layoutX="53.0" layoutY="20.0" text="Introduzca la informacion del pedido" underline="true">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <TextField layoutX="171.0" layoutY="76.0" />
+                <TextField layoutX="171.0" layoutY="107.0" />
+                <TextField layoutX="171.0" layoutY="138.0" />
+            </children></AnchorPane>
+    </center>
+</BorderPane>
