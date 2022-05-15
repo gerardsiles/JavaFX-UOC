@@ -35,8 +35,8 @@
                         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="3.0" text="Gestion de articulos" textAlignment="CENTER" />
                      </children>
                   </AnchorPane>
-                  <Button onAction="#onAgregarClienteClick" prefHeight="25.0" prefWidth="148.0" text="Agregar articulo" />
-                  <Button onAction="#onMostrarClientesClick" prefHeight="25.0" prefWidth="158.0" text="Mostrar articulos" />
+                  <Button onAction="#onAgregarArticuloClick" prefHeight="25.0" prefWidth="148.0" text="Agregar articulo" />
+                  <Button onAction="#onMostrarArticulosClick" prefHeight="25.0" prefWidth="158.0" text="Mostrar articulos" />
                   <AnchorPane prefHeight="20.0" prefWidth="141.0">
                      <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="4.0" text="Gestion de articulos" textAlignment="CENTER" />

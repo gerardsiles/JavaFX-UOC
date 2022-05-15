@@ -23,7 +23,7 @@ public class OnlineStore  extends Application {
             Scene scene = new Scene(root, 800, 600);
             stage.setScene(scene);
             stage.show();
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 

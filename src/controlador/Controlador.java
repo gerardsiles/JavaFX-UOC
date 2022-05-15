@@ -51,7 +51,21 @@ public class Controlador  {
     private TextField tipoCliente;
 
 
-
+//    agregar articulo 
+    @FXML
+    private Label agregarArticuloLabel;
+    @FXML
+    private TextField codigoProducto;
+    @FXML
+    private TextField descripcion;
+    @FXML
+    private TextField pvp;
+    @FXML
+    private TextField gastosEnvio;
+    @FXML
+    private TextField tiempoPreparacion;    
+    
+    
     @FXML
     protected void onMenuClick(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
@@ -72,6 +86,27 @@ public class Controlador  {
         }
     }
 
+    public void onAgregarArticuloClick(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("../vista/agregar-articulo.fxml"));
+            contentArea.getChildren().removeAll();
+            contentArea.getChildren().setAll(root);
+
+        } catch (IOException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        
+    public void onMostrarArticulosClick(ActionEvent actionEvent) {
+        try {
+        Parent root = FXMLLoader.load(getClass().getResource("../vista/mostrar-articulos.fxml"));
+        contentArea.getChildren().removeAll();
+        contentArea.getChildren().setAll(root);
+
+        } catch (IOException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public void onMostrarClientesClick(ActionEvent actionEvent) {
         try {
@@ -106,17 +141,31 @@ public class Controlador  {
 
 
 
-    public void agregarArticulo() {
-//        boolean creado = false;
-//        List parametros = new ArrayList<>();
-//        parametros = vista.printAgregarArticulo();
+    public void agregarArticulo(ActionEvent event) {
+        boolean creado = false;
+        List parametros = new ArrayList<>();
+
+        
+        if (codigoProducto.getText().isEmpty() || descripcion.getText().isEmpty()|| pvp.getText().isEmpty()
+                || gastosEnvio.getText().isEmpty() || tiempoPreparacion.getText().isEmpty()){
+            agregarArticuloLabel.setText("No pueden haber campos vacios");
+            return;
+        } else {
+            parametros.add(codigoProducto.getText());
+            parametros.add(descripcion.getText());
+            parametros.add(pvp.getText());
+            parametros.add(gastosEnvio.getText());
+            parametros.add(tiempoPreparacion.getText());
+        }
+        
 //        // enviar informacion a Datos si la informacion no esta vacia
-//        if (!parametros.isEmpty()) {
-//            // Comprobar si el articulo existe antes de crearlo
-//            if (!modelo.articuloExiste(parametros.get(0).toString())){
-//                creado = modelo.crearArticulo(parametros);
-//            }
-//        }
+        if (!parametros.isEmpty()) {
+            // Comprobar si el articulo existe antes de crearlo
+            if (!datos.articuloExiste(parametros.get(0).toString())){
+                creado = datos.crearArticulo(parametros);
+                agregarArticuloLabel.setText("Articulo creado");
+            }
+        }
 //        vista.articuloCreado(creado);
     }
 
@@ -165,7 +214,7 @@ public class Controlador  {
             if(!existe) {
                 creado = datos.crearCliente(parametros);
                 agregarClienteLabel.setText("Cliente creado con exito");
-
+                agregarClienteLabel.setText("Articulo creado");
             }
         }
 

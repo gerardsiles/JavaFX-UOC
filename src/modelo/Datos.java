@@ -19,10 +19,9 @@ public class Datos {
 
     // GESTION ARTICULOS
     public boolean crearArticulo(List<Object> parametros) {
-
         // crear un nuevo objeto de tipo Articulo
         Articulo articuloACrear = new Articulo(parametros.get(0).toString(),parametros.get(1).toString(),
-                (Double)parametros.get(2), (Double)parametros.get(3), (Integer)parametros.get(4));
+                Double.parseDouble(parametros.get(2).toString()), Double.parseDouble(parametros.get(3).toString()) , Integer.parseInt(parametros.get(4).toString()) );
 
         // Comprobar si el articulo existe antes de agregarlo
         if (!articulo.articuloExiste(parametros.get(0).toString())){
