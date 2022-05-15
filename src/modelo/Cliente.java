@@ -3,36 +3,39 @@ package modelo;
 
 
 public abstract class Cliente {
-
+    private String tipo;
     private String email;
     private String nombre;
     private String domicilio;
-    private String NIF;
+    private String nif;
     private int cuota;
     private int descuento;
 
     // Constructor
     public Cliente() {}
 
-    public Cliente(String nombre, String domicilio, String NIF, String email) {
-            this.nombre = nombre;
-            this.domicilio = domicilio;
-            this.NIF = NIF;
-            this.email = email;
+    public Cliente(String tipo, String email, String nombre, String domicilio, String nif) {
+        this.tipo = tipo; 
+        this.email = email;
+        this.nombre = nombre;
+        this.domicilio = domicilio;
+        this.nif = nif;
     }
 
+    public String getTipo() { return this.tipo;}
+    public void setTipo(String tipo){this.tipo = tipo;};
 
-    public String getNombre() { return nombre;}
+    public String getNombre() { return this.nombre;}
 
     public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public String getDomicilio() { return domicilio; }
+    public String getDomicilio() { return this.domicilio; }
     public void setDomicilio(String domicilio) { this.domicilio = domicilio; }
 
-    public String getNIF() { return NIF; }
-    public void setNIF(String NIF) { this.NIF = NIF; }
+    public String getNIF() { return this.nif; }
+    public void setNIF(String nif) { this.nif = nif; }
 
-    public String getEmail() { return email; }
+    public String getEmail() { return this.email; }
     public void setEmail(String email) { this.email = email; }
 
     public int getCuota() {
@@ -57,16 +60,16 @@ public abstract class Cliente {
     public abstract double descuentoGastosDeEnvio(double totalPedido); // implemented in override in childs
 
 
-    @Override
-    public String toString() {
-        return "\"Datos del cliente: \\n\" + \n" +
-                "Tipo de cliente: Premium\" + \"\\n\" +\n" +
-                "Nombre: \" + this.getNombre() + \"\\n\" +\n" +
-                "Domicilio: \" + this.getDomicilio() + \"\\n\" +\n" +
-                "NIF: \" + this.getNIF() + \"\\n\" +   \n" +
-                "Email: \" + this.getEmail() + \"\\n\" +\n" +
-                "Cuota: " + this.cuota + "\n" +
-                "Descuento en el envio: " + this.descuento;
-    }
+//    @Override
+//    public String toString() {
+//        return "\"Datos del cliente: \\n\" + \n" +
+//                "Tipo de cliente: Premium\" + \"\\n\" +\n" +
+//                "Nombre: \" + this.getNombre() + \"\\n\" +\n" +
+//                "Domicilio: \" + this.getDomicilio() + \"\\n\" +\n" +
+//                "NIF: \" + this.getNIF() + \"\\n\" +   \n" +
+//                "Email: \" + this.getEmail() + \"\\n\" +\n" +
+//                "Cuota: " + this.cuota + "\n" +
+//                "Descuento en el envio: " + this.descuento;
+//    }
 
 }

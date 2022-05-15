@@ -3,6 +3,8 @@ package modelo;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class ClienteDAOImpl extends ConexionMysql implements ClienteDAO {
     // instanciar una conexion con la base de datos
@@ -13,10 +15,10 @@ public class ClienteDAOImpl extends ConexionMysql implements ClienteDAO {
     private final static String SQL_GET_CLIENTE = "SELECT * FROM clientes WHERE email = ?";
     private final static String SQL_GET_CLIENTES = "SELECT * FROM clientes";
     @Override
-    public List<Cliente> getClientes() {
+    public ObservableList<Cliente> getClientes() {
         // declaramos una nueva lista
         Cliente cliente;
-        List<Cliente> list = new ArrayList<>();
+        ObservableList<Cliente> list = FXCollections.observableArrayList();
         // preparamos el sql statement
         try(PreparedStatement pstm = con.prepareStatement(SQL_GET_CLIENTES);
             ResultSet rs = pstm.executeQuery()){
@@ -26,11 +28,12 @@ public class ClienteDAOImpl extends ConexionMysql implements ClienteDAO {
                 int setCuota = rs.getInt(5);
                 if(setCuota > 0) {
                     Cliente clientePremium = new ClientePremium();
-
-                    clientePremium.setEmail(rs.getString(1));
+                    
+                    clientePremium.setTipo("premium");
                     clientePremium.setNombre(rs.getString(2));
                     clientePremium.setDomicilio(rs.getString(3));
                     clientePremium.setNIF(rs.getString(4));
+                    clientePremium.setEmail(rs.getString(1));
                     clientePremium.setCuota(rs.getInt(5));
                     clientePremium.setDescuento(rs.getInt(6));
 
@@ -38,11 +41,11 @@ public class ClienteDAOImpl extends ConexionMysql implements ClienteDAO {
                     list.add(cliente);
                 } else {
                     Cliente clienteEstandard = new ClienteEstandard();
-
-                    clienteEstandard.setEmail(rs.getString(1));
+                    clienteEstandard.setTipo("standard");
                     clienteEstandard.setNombre(rs.getString(2));
                     clienteEstandard.setDomicilio(rs.getString(3));
                     clienteEstandard.setNIF(rs.getString(4));
+                    clienteEstandard.setEmail(rs.getString(1));
                     clienteEstandard.setCuota(rs.getInt(5));
                     clienteEstandard.setDescuento(rs.getInt(6));
 
@@ -101,6 +104,7 @@ public class ClienteDAOImpl extends ConexionMysql implements ClienteDAO {
 
     @Override
     public boolean addCliente(Cliente cliente) {
+        System.out.println(cliente.getNIF());
         try {
             // preparar el mysql statement
             PreparedStatement pstm = con.prepareStatement(SQL_CREATE_CLIENTE);
@@ -109,9 +113,9 @@ public class ClienteDAOImpl extends ConexionMysql implements ClienteDAO {
             pstm.setString(2, cliente.getNombre());
             pstm.setString(3, cliente.getDomicilio());
             pstm.setString(4, cliente.getNIF());
-            pstm.setDouble(5, cliente.getDescuento());
-            pstm.setDouble(6, cliente.getCuota());
-            // Ejecutamos statement
+            pstm.setDouble(5, cliente.getCuota());
+            pstm.setDouble(6, cliente.getDescuento());
+//            // Ejecutamos statement
             pstm.executeUpdate();
             return true;
 
@@ -142,10 +146,10 @@ public class ClienteDAOImpl extends ConexionMysql implements ClienteDAO {
     }
 
     @Override
-    public List<Cliente> listarClientesEstandard() {
+    public ObservableList<Cliente> listarClientesEstandard() {
     // declaramos una nueva lista
         Cliente cliente;
-        List<Cliente> list = new ArrayList<>();
+        ObservableList<Cliente> list = FXCollections.observableArrayList();
         // preparamos el sql statement
         try(PreparedStatement pstm = con.prepareStatement(SQL_GET_CLIENTES);
             ResultSet rs = pstm.executeQuery()){
@@ -175,10 +179,10 @@ public class ClienteDAOImpl extends ConexionMysql implements ClienteDAO {
 
 
     @Override
-    public List<Cliente> listarClientesPremium() {
+    public ObservableList<Cliente> listarClientesPremium() {
         // declaramos una nueva lista
         Cliente cliente;
-        List<Cliente> list = new ArrayList<>();
+        ObservableList<Cliente> list = FXCollections.observableArrayList();
         // preparamos el sql statement
         try(PreparedStatement pstm = con.prepareStatement(SQL_GET_CLIENTES);
             ResultSet rs = pstm.executeQuery()){

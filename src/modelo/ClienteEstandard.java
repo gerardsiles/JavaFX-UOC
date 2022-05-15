@@ -7,8 +7,8 @@ public class ClienteEstandard extends Cliente {
 
     // Contructor
     public ClienteEstandard() {}
-    public ClienteEstandard(String nombre, String domicilio, String NIF, String email) {
-        super(nombre, domicilio, NIF, email);
+    public ClienteEstandard(String tipo, String email, String nombre, String domicilio, String nif) {
+        super(tipo, email, nombre, domicilio, nif);
         super.setCuota(0);
         super.setDescuento(0);
     }
@@ -41,13 +41,13 @@ public class ClienteEstandard extends Cliente {
 
     @Override
     public String toString(){
-        return "Datos del cliente: \n" +
-                "Tipo de cliente: Estandard" + "\n" +
-                "Nombre: " + this.getNombre() + "\n" +
-                "Domicilio: " + this.getDomicilio() + "\n" +
-                "NIF: " + this.getNIF() + "\n" +
-                "Email: " + this.getEmail() + "\n" +
-                "Cuota: " + this.getCuota() + "\n" +
-                "Descuento en el envio: " + this.getDescuento();
+        return 
+                "Tipo: " + this.getTipo() + "," +
+                "Nombre: " + this.getNombre() + "," +
+                "Domicilio: " + this.getDomicilio() + "," +
+                "NIF: " + this.getNIF() + "," +
+                "Email: " + this.getEmail() + "," +
+                "Cuota: " + this.getCuota() + "," +
+                "Descuento en el envio: " + this.getDescuento() + "\n" ;
     }
 }

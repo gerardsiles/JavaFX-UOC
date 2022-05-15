@@ -3,6 +3,7 @@ package modelo;
 
 import java.util.Date;
 import java.util.List;
+import javafx.collections.ObservableList;
 
 
 public class Datos {
@@ -54,13 +55,13 @@ public class Datos {
         // en la primera posicion de los parametros tenemos el tipo de cliente
         if (parametros.get(0).equals("standard")) {
             // crear cliente estandard
-            Cliente clienteEstandard = new ClienteEstandard(parametros.get(1).toString(),parametros.get(2).toString(),
+            Cliente clienteEstandard = new ClienteEstandard(parametros.get(0).toString(),parametros.get(1).toString(),parametros.get(2).toString(),
                     parametros.get(3).toString(),parametros.get(4).toString());
             cliente.addCliente(clienteEstandard);
             clienteCreado = cliente.clienteExiste(parametros.get(1).toString());
         } else if (parametros.get(0).equals("premium")) {
             // crear cliente premium
-            Cliente cp = new ClientePremium(parametros.get(1).toString(),parametros.get(2).toString(),
+            Cliente cp = new ClientePremium(parametros.get(0).toString() , parametros.get(1).toString(),parametros.get(2).toString(),
                     parametros.get(3).toString(),parametros.get(4).toString());
             cliente.addCliente(cp);
             clienteCreado = cliente.clienteExiste(parametros.get(1).toString());
@@ -69,15 +70,15 @@ public class Datos {
         return clienteCreado;
     }
 
-    public List<Cliente> recibirDatosClientes() {
+    public ObservableList<Cliente> recibirDatosClientes() {
         return cliente.getClientes();
     }
 
-    public List<Cliente> recibirDatosClientesEstandard() {
+    public ObservableList<Cliente> recibirDatosClientesEstandard() {
         return cliente.listarClientesEstandard();
     }
 
-    public List<Cliente> recibirDatosClientesPremium() {
+    public ObservableList<Cliente> recibirDatosClientesPremium() {
         return cliente.listarClientesPremium();
     }
 

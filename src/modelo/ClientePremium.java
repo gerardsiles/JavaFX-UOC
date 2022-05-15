@@ -6,8 +6,8 @@ public class ClientePremium extends Cliente {
 
     // Constructor
     public ClientePremium() {}
-    public ClientePremium(String nombre, String domicilio, String NIF, String email) {
-        super(nombre, domicilio, NIF, email);
+    public ClientePremium(String tipo, String email, String nombre, String domicilio, String nif) {
+        super(tipo, email, nombre, domicilio, nif);
         super.setCuota(30);
         super.setDescuento(20);
     }
@@ -32,13 +32,13 @@ public class ClientePremium extends Cliente {
 
     @Override
     public String toString(){
-        return "Datos del cliente: \n" +
-                "Tipo de cliente: Premium" + "\n" +
-                "Nombre: " + this.getNombre() + "\n" +
-                "Domicilio: " + this.getDomicilio() + "\n" +
-                "NIF: " + this.getNIF() + "\n" +
-                "Email: " + this.getEmail() + "\n" +
-                "Cuota: " + this.getCuota() + "\n" +
-                "Descuento en el envio: " + this.getDescuento();
+        return 
+                "Tipo:" + this.getTipo() + "," +
+                "Nombre: " + this.getNombre() + "," +
+                "Domicilio: " + this.getDomicilio() + "," +
+                "NIF: " + this.getNIF() + "," +
+                "Email: " + this.getEmail() + "," +
+                "Cuota: " + this.getCuota() + "," +
+                "Descuento en el envio: " + this.getDescuento() + "\n";
     }
 }

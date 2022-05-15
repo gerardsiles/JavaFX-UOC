@@ -7,17 +7,17 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controlador.Controlador">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="642.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.MostrarClientesController">
    <children>
-      <TableView layoutX="62.0" layoutY="74.0" prefHeight="326.0" prefWidth="538.0">
+      <TableView fx:id="tabla_clientes" layoutX="1.0" layoutY="74.0" prefHeight="326.0" prefWidth="635.0">
         <columns>
-          <TableColumn prefWidth="97.0" text="email" />
-          <TableColumn prefWidth="88.0" text="nombre" />
-            <TableColumn prefWidth="107.0" text="domicilio" />
-            <TableColumn prefWidth="103.0" text="nif" />
-            <TableColumn prefWidth="64.0" text="cuota" />
-            <TableColumn prefWidth="78.0" text="descuento" />
+          <TableColumn fx:id="col_tipoCliente" prefWidth="89.0" text="tipo" />
+          <TableColumn fx:id="col_nombre" prefWidth="101.0" text="nombre" />
+            <TableColumn fx:id="col_domicilio" prefWidth="143.0" text="domicilio" />
+            <TableColumn fx:id="col_nif" prefWidth="74.0" text="nif" />
+            <TableColumn fx:id="col_email" prefWidth="103.0" text="email" />
+            <TableColumn fx:id="col_cuota" prefWidth="57.0" text="cuota" />
+            <TableColumn fx:id="col_descuento" prefWidth="67.0" text="descuento" />
         </columns>
       </TableView>
       <Pane layoutX="81.0" layoutY="52.0" prefHeight="4.0" prefWidth="501.0" style="-fx-background-color: black;" />

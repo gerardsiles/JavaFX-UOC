@@ -25,6 +25,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
+
 public class Controlador  {
     private Stage stage;
     private Scene scene;
@@ -34,7 +35,10 @@ public class Controlador  {
     @FXML
     private StackPane contentArea;
     @FXML
+//    Agregar cliente
     private Label agregarClienteLabel;
+    @FXML
+    private Label agregarClienteLabelConfirmacion;
     @FXML
     private TextField email;
     @FXML
@@ -54,6 +58,8 @@ public class Controlador  {
 //    agregar articulo 
     @FXML
     private Label agregarArticuloLabel;
+    @FXML
+    private Label agregarArticuloLabelConfirmacion;
     @FXML
     private TextField codigoProducto;
     @FXML
@@ -118,11 +124,28 @@ public class Controlador  {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     public void onStandardClick(ActionEvent actionEvent) {
+        try {
+        Parent root = FXMLLoader.load(getClass().getResource("../vista/mostrar-clientes-standard.fxml"));
+        contentArea.getChildren().removeAll();
+        contentArea.getChildren().setAll(root);
+
+        } catch (IOException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+    
 
     public void onPremiumClick(ActionEvent actionEvent) {
+                try {
+        Parent root = FXMLLoader.load(getClass().getResource("../vista/mostrar-clientes-premium.fxml"));
+        contentArea.getChildren().removeAll();
+        contentArea.getChildren().setAll(root);
+
+        } catch (IOException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void onPedidosClick(ActionEvent actionEvent) {
@@ -163,7 +186,7 @@ public class Controlador  {
             // Comprobar si el articulo existe antes de crearlo
             if (!datos.articuloExiste(parametros.get(0).toString())){
                 creado = datos.crearArticulo(parametros);
-                agregarArticuloLabel.setText("Articulo creado");
+                agregarArticuloLabelConfirmacion.setText("Articulo creado");
             }
         }
 //        vista.articuloCreado(creado);
@@ -200,12 +223,11 @@ public class Controlador  {
         } else {
             parametros.add(tipoCliente.getText());
             parametros.add(email.getText());
-            parametros.add(cuota.getText());
-            parametros.add(descuento.getText());
+            parametros.add(nombre.getText());
             parametros.add(domicilio.getText());
             parametros.add(nif.getText());
-            parametros.add(nombre.getText());
-            System.out.println(parametros);
+            parametros.add(cuota.getText());
+            parametros.add(descuento.getText());
         }
 
         if (!parametros.isEmpty()) {
@@ -213,8 +235,7 @@ public class Controlador  {
             existe = datos.clienteExiste(email.getText());
             if(!existe) {
                 creado = datos.crearCliente(parametros);
-                agregarClienteLabel.setText("Cliente creado con exito");
-                agregarClienteLabel.setText("Articulo creado");
+                agregarClienteLabelConfirmacion.setText("Cliente creado con exito");
             }
         }
 
