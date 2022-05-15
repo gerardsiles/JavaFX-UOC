@@ -126,7 +126,7 @@ public class Datos {
         return pedido.getPedidosPendientes();
     }
 
-    public List<Pedido> recibirDatosPedidosEnviados() {
+    public ObservableList<Pedido> recibirDatosPedidosEnviados() {
         // actualizar los pedidos
         pedido.actualizarPedidos();
         // recibir todos los pedidos enviados

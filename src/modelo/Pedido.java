@@ -123,13 +123,13 @@ public class Pedido {
         // precio total y si ya se ha enviado.
         return "El numero del pedido es: " + this.numeroDePedido + "\n" +
                 "Fecha del pedido: " + this.fecha + "\n" +
-                "Cliente: " + this.cliente.getNIF() + ", " + this.cliente.getNombre() + "\n" +
+                "Cliente: " + this.cliente.getEmail() + "\n" +
                 "Codigo del articulo: " + this.articulo.getCodigoProducto() + "\n" +
                 "Cantidad: " + this.cantidad + "\n" +
                 "Precio del articulo: " + articulo.getPvp() + "\n" +
                 "Costes de envio: " + articulo.getGastosDeEnvio() + "\n" +
-                "Coste total de envio: " + precioEnvio() + "\n" +
-                "Precio total: " + calcularPrecio() + "\n" +
+                "gastosDeEnvio: " + precioEnvio() + "\n" +
+                "total: " + calcularPrecio() + "\n" +
                 "Procesado: " + pedidoEnviado() + "\n"
                 ;
     }

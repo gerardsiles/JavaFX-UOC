@@ -120,6 +120,7 @@ public class PedidoDAOImpl extends ConexionMysql implements PedidoDAO{
     @Override
     public ObservableList<Pedido> getPedidosPendientes() {
         ObservableList<Pedido> list = FXCollections.observableArrayList();
+        
         try(PreparedStatement pstm = con.prepareStatement(SQL_SELECT_PEDIDOS_PENDIENTES);
             ResultSet rs = pstm.executeQuery()){
             // siempre que hayan mas columnas
@@ -132,7 +133,6 @@ public class PedidoDAOImpl extends ConexionMysql implements PedidoDAO{
                 pedido.setCantidad(rs.getInt(4));
                 pedido.setFecha(rs.getTimestamp(5));
                 pedido.setProcesado(rs.getBoolean(6));
-                System.out.println(pedido);
                 list.add(pedido);
             }
         } catch (SQLException ex) {
@@ -142,7 +142,26 @@ public class PedidoDAOImpl extends ConexionMysql implements PedidoDAO{
     }
 
     @Override
-    public List<Pedido> getPedidosEnviados() {
-        return getPedidos(SQL_SELECT_PEDIDOS_ENVIADOS);
+    public ObservableList<Pedido> getPedidosEnviados() {
+        ObservableList<Pedido> list = FXCollections.observableArrayList();
+        
+        try(PreparedStatement pstm = con.prepareStatement(SQL_SELECT_PEDIDOS_ENVIADOS);
+            ResultSet rs = pstm.executeQuery()){
+            // siempre que hayan mas columnas
+            while(rs.next()) {
+                Pedido pedido = new Pedido();
+
+                pedido.setNumeroDePedido(rs.getInt(1));
+                pedido.setCliente(cliente.getClienteByEmail(rs.getString(2)));
+                pedido.setArticulo(articulo.getArticuloByID(rs.getString(3)));
+                pedido.setCantidad(rs.getInt(4));
+                pedido.setFecha(rs.getTimestamp(5));
+                pedido.setProcesado(rs.getBoolean(6));
+                list.add(pedido);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return list;
     }
 }

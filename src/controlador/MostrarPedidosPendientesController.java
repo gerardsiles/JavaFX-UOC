@@ -51,7 +51,7 @@ public class MostrarPedidosPendientesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        numPedido.setCellValueFactory(new PropertyValueFactory<Pedido, Integer>("numeroDePedido"));
-       emailCliente.setCellValueFactory(new PropertyValueFactory<Pedido, String>("cliente"));       
+       emailCliente.setCellValueFactory(new PropertyValueFactory<Pedido, String>("email"));       
        codArticulo.setCellValueFactory(new PropertyValueFactory<Pedido, String>("gastosDeEnvio"));
        cantidad.setCellValueFactory(new PropertyValueFactory<Pedido, Integer>("cantidad"));
        fecha.setCellValueFactory(new PropertyValueFactory<Pedido, Timestamp>("fecha"));

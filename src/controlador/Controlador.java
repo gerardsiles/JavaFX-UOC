@@ -360,7 +360,7 @@ public class Controlador  {
     public void borrarPedido(ActionEvent event) {
         pedidoBorrarErrorLabel.setText("");
         boolean pedidoEliminado;
-        
+         
 //        // llamar al modelo para eliminar el pedido
         pedidoEliminado = datos.eliminarPedido(Integer.parseInt(codPedido.getText()));
 //
