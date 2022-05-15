@@ -98,7 +98,7 @@ public class Datos {
         // el numero de pedido es autoincrement, no hace falta agregarlo
         nuevoPedido.setArticulo(articuloPedido);
         nuevoPedido.setCliente(clientePedido);
-        nuevoPedido.setCantidad((Integer)parametros.get(2));
+        nuevoPedido.setCantidad(Integer.parseInt(parametros.get(2).toString()));
         nuevoPedido.setFecha(dateSQL);
         nuevoPedido.setProcesado(false);
 
@@ -119,7 +119,7 @@ public class Datos {
         return pedido.eliminarPedido(numPedido);
     }
 
-    public List<Pedido> recibirDatosPedidosPendientes() {
+    public ObservableList<Pedido> recibirDatosPedidosPendientes() {
         // actualizar los pedidos si se han enviado
         pedido.actualizarPedidos();
         // recibir todos los pedidos WHERE enviado == FALSE

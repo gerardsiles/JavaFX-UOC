@@ -13,17 +13,13 @@
    <left>
       <AnchorPane prefHeight="400.0" prefWidth="602.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="171.0" layoutY="188.0" text="Cantidad" />
-            <Label layoutX="171.0" layoutY="154.0" text="Email cliente" />
-            <TextField fx:id="emailPedido" layoutX="266.0" layoutY="150.0" />
-            <TextField fx:id="cantidad" layoutX="265.0" layoutY="184.0" />
-            <Button fx:id="submitButton" layoutX="308.0" layoutY="225.0" mnemonicParsing="false" onAction="#agregarPedido" text="Registrar" />
-            <Label fx:id="pedidoErrorLabel" layoutX="254.0" layoutY="83.0" prefHeight="21.0" prefWidth="192.0" textFill="#f20303" />
-            <Label fx:id="pedidoSuccessLabel" layoutX="266.0" layoutY="83.0" prefHeight="21.0" prefWidth="192.0" textFill="green" />
-            <Label layoutX="171.0" layoutY="120.0" text="Codigo Articulo" />
-            <TextField fx:id="codArticulo" layoutX="266.0" layoutY="116.0" />
+            <Button fx:id="submitButton" layoutX="309.0" layoutY="165.0" mnemonicParsing="false" onAction="#borrarPedido" text="Borrar" />
+            <Label fx:id="pedidoBorrarErrorLabel" layoutX="254.0" layoutY="83.0" prefHeight="21.0" prefWidth="192.0" textFill="#f20303" />
+            <Label fx:id="pedidoBorrarSuccessLabel" layoutX="266.0" layoutY="83.0" prefHeight="21.0" prefWidth="192.0" textFill="green" />
+            <Label layoutX="171.0" layoutY="120.0" text="Codigo Pedido" />
+            <TextField fx:id="codPedido" layoutX="266.0" layoutY="116.0" />
             <Pane layoutX="158.0" layoutY="60.0" prefHeight="5.0" prefWidth="314.0" style="-fx-background-color: black;" />
-            <Text layoutX="173.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agregar Pedido">
+            <Text layoutX="173.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Borrar Pedido">
                <font>
                   <Font size="21.0" />
                </font>

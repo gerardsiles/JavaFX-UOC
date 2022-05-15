@@ -3,6 +3,8 @@ package modelo;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class PedidoDAOImpl extends ConexionMysql implements PedidoDAO{
     // crear una instancia de la conexion a la base de datos de MySQL
@@ -116,8 +118,27 @@ public class PedidoDAOImpl extends ConexionMysql implements PedidoDAO{
     }
 
     @Override
-    public List<Pedido> getPedidosPendientes() {
-        return getPedidos(SQL_SELECT_PEDIDOS_PENDIENTES);
+    public ObservableList<Pedido> getPedidosPendientes() {
+        ObservableList<Pedido> list = FXCollections.observableArrayList();
+        try(PreparedStatement pstm = con.prepareStatement(SQL_SELECT_PEDIDOS_PENDIENTES);
+            ResultSet rs = pstm.executeQuery()){
+            // siempre que hayan mas columnas
+            while(rs.next()) {
+                Pedido pedido = new Pedido();
+
+                pedido.setNumeroDePedido(rs.getInt(1));
+                pedido.setCliente(cliente.getClienteByEmail(rs.getString(2)));
+                pedido.setArticulo(articulo.getArticuloByID(rs.getString(3)));
+                pedido.setCantidad(rs.getInt(4));
+                pedido.setFecha(rs.getTimestamp(5));
+                pedido.setProcesado(rs.getBoolean(6));
+                System.out.println(pedido);
+                list.add(pedido);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return list;
     }
 
     @Override

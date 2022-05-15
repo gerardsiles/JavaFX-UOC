@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.Button;
 
 
 
@@ -71,6 +72,38 @@ public class Controlador  {
     @FXML
     private TextField tiempoPreparacion;    
     
+    // Agregar pedido
+
+    @FXML
+    private TextField codArticulo;
+
+    @FXML
+    private TextField cantidad;
+
+    @FXML
+    private TextField emailPedido;
+
+    @FXML
+    private Label pedidoErrorLabel;
+
+    @FXML
+    private Button submitButton;
+
+    @FXML
+    private Label pedidoSuccessLabel;
+    
+    // Borrar pedido
+    
+    @FXML
+    private TextField codPedido;
+
+    @FXML
+    private Label pedidoBorrarErrorLabel;
+
+    @FXML
+    private Label pedidoBorrarSuccessLabel;
+
+
     
     @FXML
     protected void onMenuClick(ActionEvent event) throws IOException {
@@ -86,7 +119,6 @@ public class Controlador  {
             Parent root = FXMLLoader.load(getClass().getResource("../vista/agregar-cliente.fxml"));
             contentArea.getChildren().removeAll();
             contentArea.getChildren().setAll(root);
-
         } catch (IOException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -97,7 +129,6 @@ public class Controlador  {
             Parent root = FXMLLoader.load(getClass().getResource("../vista/agregar-articulo.fxml"));
             contentArea.getChildren().removeAll();
             contentArea.getChildren().setAll(root);
-
         } catch (IOException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -108,7 +139,6 @@ public class Controlador  {
         Parent root = FXMLLoader.load(getClass().getResource("../vista/mostrar-articulos.fxml"));
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(root);
-
         } catch (IOException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -119,7 +149,6 @@ public class Controlador  {
         Parent root = FXMLLoader.load(getClass().getResource("../vista/mostrar-clientes.fxml"));
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(root);
-
         } catch (IOException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -130,7 +159,6 @@ public class Controlador  {
         Parent root = FXMLLoader.load(getClass().getResource("../vista/mostrar-clientes-standard.fxml"));
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(root);
-
         } catch (IOException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -138,21 +166,54 @@ public class Controlador  {
     
 
     public void onPremiumClick(ActionEvent actionEvent) {
-                try {
-        Parent root = FXMLLoader.load(getClass().getResource("../vista/mostrar-clientes-premium.fxml"));
-        contentArea.getChildren().removeAll();
-        contentArea.getChildren().setAll(root);
-
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("../vista/mostrar-clientes-premium.fxml"));
+            contentArea.getChildren().removeAll();
+            contentArea.getChildren().setAll(root);
         } catch (IOException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void onPedidosClick(ActionEvent actionEvent) {
-        
+    public void onPedidoClick(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("../vista/agregar-pedido.fxml"));
+            contentArea.getChildren().removeAll();
+            contentArea.getChildren().setAll(root);
+        } catch (IOException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void onEliminarPedidoClick(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("../vista/borrar-pedido.fxml"));
+            contentArea.getChildren().removeAll();
+            contentArea.getChildren().setAll(root);
+        } catch (IOException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-
+    public void onPedidosPendientesClick(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("../vista/mostrar-pedidos-pendientes.fxml"));
+            contentArea.getChildren().removeAll();
+            contentArea.getChildren().setAll(root);
+        } catch (IOException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }
+    
+    public void onPedidosEnviadosClick(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("../vista/mostrar-pedidos-enviados.fxml"));
+            contentArea.getChildren().removeAll();
+            contentArea.getChildren().setAll(root);
+        } catch (IOException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     // MENU PRINCIPAL
 
 
@@ -213,11 +274,7 @@ public class Controlador  {
         List parametros = new ArrayList();
 //        parametros = vista.printAgregarCliente();
         /* Comprobar que los campos no esten vacios */
-//        if(nombre.getText().isBlank() || email.getText().isBlank() || cuota.getText().isBlank() ||
-//           descuento.getText().isBlank() || domicilio.getText().isBlank() || nif.getText().isBlank()){
-//            agregarClienteLabel.setText("No pueden haber campos vacios");
-//            return;
-        if (nombre.getText().isEmpty()){
+        if((nombre.getText().isEmpty() || email.getText().isEmpty() || cuota.getText().isEmpty() || descuento.getText().isEmpty() || domicilio.getText().isEmpty()) || nif.getText().isEmpty()) {
             agregarClienteLabel.setText("No pueden haber campos vacios");
             return;
         } else {
@@ -267,67 +324,52 @@ public class Controlador  {
 
 
     // metodo para agregar un pedido
-    public void agregarPedido() throws Exception {
-//        List parametros = new ArrayList<>();
-//        boolean pedidoCreado = false;
-//        String codigoArticulo = "";
-//        String emailCliente = "";
-//        int cantidad = 0;
-//
-//        // recibir el codigo del articulo
-//        try {
-//            codigoArticulo = vista.printAgregarPedido();
-//            // comprobar si el articulo existe
-//            if (!modelo.articuloExiste(codigoArticulo)) {
-//                // lanzar error si el articulo no existe
-//                throw new ArticuloNoExisteException("Este articulo no existe");
-//            } else {
-//                parametros.add(codigoArticulo);
-//            }
-//        } catch (ArticuloNoExisteException ex) { // manejar la excepcion
-//            ex.printStackTrace();
-//        }
-//
-//        // recibir el email del cliente
-//        try {
-//            emailCliente = vista.printGetClientePedido();
-//            // comprobar si el cliente existe
-//            if (!modelo.clienteExiste(emailCliente)) {
-//                // lanzar error si el cliente no existe
-//                throw new ClienteNoExisteException("Este cliente no existe");
-//            } else {
-//                parametros.add(emailCliente);
-//            }
-//        } catch (ClienteNoExisteException ex) {
-//            ex.printStackTrace();
-//        }
-//
-//        // recibir la cantidad
-//        cantidad = vista.printGetCantidadPedido();
-//        parametros.add(cantidad);
-//
-//
-//        // Llamar al modelo para crear el pedido
-//        pedidoCreado = modelo.crearDatosPedido(parametros);
-//
-//        // informar a la vista si se ha creado el pedido
-//        vista.pedidoCreado(pedidoCreado);
+    public void agregarPedido() {
+        pedidoErrorLabel.setText("");
+        List parametros = new ArrayList<>();
+        boolean pedidoCreado = false;
+
+        if (cantidad.getText().isEmpty() || emailPedido.getText().isEmpty() || codArticulo.getText().isEmpty()){
+            pedidoErrorLabel.setText("No pueden haber campos vacios");
+        } else {            
+            if (!datos.articuloExiste(codArticulo.getText())) {
+                pedidoErrorLabel.setText("Este articulo no existe");
+                return;
+            }
+                //  comprobar si el cliente existe
+            if (!datos.clienteExiste(emailPedido.getText())) {
+               pedidoErrorLabel.setText("Este cliente no existe");
+                return;
+            } 
+
+            
+            parametros.add(codArticulo.getText());
+            parametros.add(emailPedido.getText());
+            parametros.add(cantidad.getText());
+            // Llamar al modelo para crear el pedido
+            pedidoCreado = datos.crearDatosPedido(parametros);
+            // informar a la vista si se ha creado el pedido
+            if (pedidoCreado){
+                pedidoSuccessLabel.setText("Pedido creado");
+            }
+        }
     }
 
 
     // metodo para eliminar un pedido
-    public void eliminarPedido() throws Exception {
-//        int numPedido;
-//        boolean pedidoEliminado;
-//
-//        // recibir el número del pedido a ser borrado
-//        numPedido = vista.printEliminarPedido();
-//
+    public void borrarPedido(ActionEvent event) {
+        pedidoBorrarErrorLabel.setText("");
+        boolean pedidoEliminado;
+        
 //        // llamar al modelo para eliminar el pedido
-//        pedidoEliminado = modelo.eliminarPedido(numPedido);
+        pedidoEliminado = datos.eliminarPedido(Integer.parseInt(codPedido.getText()));
 //
 //        // informar si el pedido se ha eliminado
-//        vista.pedidoEliminado(pedidoEliminado);
+        if(pedidoEliminado) {
+            pedidoBorrarSuccessLabel.setText("Pedido borrado");
+        } else {
+            pedidoBorrarErrorLabel.setText("Ha ocurrido un error, vuelvelo a intentar");
+        }
 
     }
 

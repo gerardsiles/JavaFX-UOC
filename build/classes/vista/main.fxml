@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controlador.Controlador">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Controlador">
    <top>
       <Pane prefHeight="25.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -39,10 +39,13 @@
                   <Button onAction="#onMostrarArticulosClick" prefHeight="25.0" prefWidth="158.0" text="Mostrar articulos" />
                   <AnchorPane prefHeight="20.0" prefWidth="141.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="4.0" text="Gestion de articulos" textAlignment="CENTER" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="4.0" text="Gestion de Pedidos" textAlignment="CENTER" />
                      </children>
                   </AnchorPane>
-                  <Button mnemonicParsing="false" onAction="#onPedidosClick" prefHeight="17.0" prefWidth="153.0" text="Gestion pedidos" />
+                  <Button mnemonicParsing="false" onAction="#onPedidoClick" prefHeight="17.0" prefWidth="153.0" text="Agregar Pedido" />
+                  <Button mnemonicParsing="false" onAction="#onEliminarPedidoClick" prefHeight="17.0" prefWidth="153.0" text="Eliminar Pedido" />
+                  <Button mnemonicParsing="false" onAction="#onPedidosPendientesClick" prefHeight="17.0" prefWidth="153.0" text="Pedidos Pendientes" />
+                  <Button mnemonicParsing="false" onAction="#onPedidosEnviadosClick" prefHeight="17.0" prefWidth="153.0" text="Pedidos Enviados" />
                </children>
             </VBox>
          </children>
