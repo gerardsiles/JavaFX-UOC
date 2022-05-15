@@ -5,25 +5,34 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Controlador">
-   <left>
-      <AnchorPane prefHeight="400.0" prefWidth="480.0" BorderPane.alignment="CENTER">
+   <center>
+      <AnchorPane prefHeight="400.0" prefWidth="630.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="185.0" layoutY="142.0" text="pvp" />
-            <Label layoutX="185.0" layoutY="108.0" text="Descripcion" />
-            <Label layoutX="185.0" layoutY="171.0" text="Gastos envio" />
-            <Label layoutX="185.0" layoutY="201.0" text="tiempo preparacion" />
-            <TextField fx:id="descripcion" layoutX="303.0" layoutY="104.0" />
-            <TextField fx:id="pvp" layoutX="302.0" layoutY="138.0" />
-            <TextField fx:id="gastosEnvio" layoutX="302.0" layoutY="167.0" />
-            <TextField fx:id="tiempoPreparacion" layoutX="302.0" layoutY="197.0" />
-            <Button fx:id="submitButton" layoutX="345.0" layoutY="241.0" mnemonicParsing="false" onAction="#agregarArticulo" text="Registrar" />
+            <Label layoutX="190.0" layoutY="194.0" text="pvp" />
+            <Label layoutX="190.0" layoutY="160.0" text="Descripcion" />
+            <Label layoutX="190.0" layoutY="223.0" text="Gastos envio" />
+            <Label layoutX="190.0" layoutY="253.0" text="tiempo preparacion" />
+            <TextField fx:id="descripcion" layoutX="308.0" layoutY="156.0" />
+            <TextField fx:id="pvp" layoutX="307.0" layoutY="190.0" />
+            <TextField fx:id="gastosEnvio" layoutX="307.0" layoutY="219.0" />
+            <TextField fx:id="tiempoPreparacion" layoutX="307.0" layoutY="249.0" />
+            <Button fx:id="submitButton" layoutX="350.0" layoutY="293.0" mnemonicParsing="false" onAction="#agregarArticulo" text="Registrar" />
             <Label fx:id="agregarArticuloLabel" layoutX="300.0" layoutY="36.0" prefHeight="21.0" prefWidth="192.0" textFill="#f20303" />
             <Label fx:id="agregarArticuloLabelConfirmacion" layoutX="300.0" layoutY="36.0" prefHeight="21.0" prefWidth="192.0" textFill="green" />
-            <Label layoutX="185.0" layoutY="74.0" text="Codigo producto" />
-            <TextField fx:id="codigoProducto" layoutX="303.0" layoutY="70.0" />
+            <Label layoutX="190.0" layoutY="126.0" text="Codigo producto" />
+            <TextField fx:id="codigoProducto" layoutX="308.0" layoutY="122.0" />
+            <Pane layoutX="174.0" layoutY="90.0" prefHeight="4.0" prefWidth="306.0" style="-fx-background-color: black;" />
+            <Text layoutX="176.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agregar Articulo">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
-   </left>
+   </center>
 </BorderPane>

@@ -39,7 +39,7 @@ public class Datos {
         return articulo.articuloExiste(codArticulo);
     }
 
-    public List<Articulo> listarArticulos() {
+    public ObservableList<Articulo> listarArticulos() {
         return articulo.getArticulos();
     }
     // FIN GESTION ARTICULOS

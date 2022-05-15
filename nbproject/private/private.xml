@@ -4,9 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/gerar/Documents/UOC/S4_Programacion%20orientada%20a%20objetos/AA1/JavaFX-UOC/src/controlador/Controlador.java</file>
+            <file>file:/C:/Users/gerar/Documents/UOC/S4_Programacion%20orientada%20a%20objetos/AA1/JavaFX-UOC/src/vista/mostrar-clientes-premium.fxml</file>
             <file>file:/C:/Users/gerar/Documents/UOC/S4_Programacion%20orientada%20a%20objetos/AA1/JavaFX-UOC/src/modelo/Datos.java</file>
-            <file>file:/C:/Users/gerar/Documents/UOC/S4_Programacion%20orientada%20a%20objetos/AA1/JavaFX-UOC/src/vista/agregar-articulo.fxml</file>
-            <file>file:/C:/Users/gerar/Documents/UOC/S4_Programacion%20orientada%20a%20objetos/AA1/JavaFX-UOC/src/vista/agregar-cliente.fxml</file>
+            <file>file:/C:/Users/gerar/Documents/UOC/S4_Programacion%20orientada%20a%20objetos/AA1/JavaFX-UOC/src/controlador/MostrarClientesPremiumController.java</file>
+            <file>file:/C:/Users/gerar/Documents/UOC/S4_Programacion%20orientada%20a%20objetos/AA1/JavaFX-UOC/src/modelo/ClienteDAOImpl.java</file>
+            <file>file:/C:/Users/gerar/Documents/UOC/S4_Programacion%20orientada%20a%20objetos/AA1/JavaFX-UOC/src/controlador/MostrarClientesController.java</file>
+            <file>file:/C:/Users/gerar/Documents/UOC/S4_Programacion%20orientada%20a%20objetos/AA1/JavaFX-UOC/src/modelo/ArticuloDAOImpl.java</file>
         </group>
     </open-files>
 </project-private>

@@ -3,6 +3,8 @@ package modelo;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class ArticuloDAOImpl extends ConexionMysql implements ArticuloDao {
     // instanciar la conexion con la base de datos
@@ -31,9 +33,9 @@ public class ArticuloDAOImpl extends ConexionMysql implements ArticuloDao {
     }
 
     @Override
-    public List<Articulo> getArticulos() {
+    public ObservableList<Articulo> getArticulos() {
         // Declarar lista para guardar los articulos
-        List<Articulo> list = new ArrayList<>();
+        ObservableList<Articulo> list = FXCollections.observableArrayList();
         // preparar el mysql statement
         try (PreparedStatement psmt = con.prepareStatement(SQL_GET_ALL_PRODUCTS)) {
             try(ResultSet rs = psmt.executeQuery()) {
