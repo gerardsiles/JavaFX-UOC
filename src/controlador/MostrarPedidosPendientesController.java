@@ -13,6 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import modelo.Articulo;
+import modelo.Cliente;
 import modelo.Pedido;
 import modelo.Datos;
 
@@ -28,10 +30,10 @@ public class MostrarPedidosPendientesController implements Initializable {
     private TableColumn<Pedido, Integer> cantidad;
 
     @FXML
-    private TableColumn<Pedido, String> codArticulo;
+    private TableColumn<Pedido, Articulo> codArticulo;
 
     @FXML
-    private TableColumn<Pedido, String> emailCliente;
+    private TableColumn<Pedido, Cliente> emailCliente;
 
     @FXML
     private TableColumn<Pedido, Timestamp> fecha;
@@ -51,8 +53,8 @@ public class MostrarPedidosPendientesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        numPedido.setCellValueFactory(new PropertyValueFactory<Pedido, Integer>("numeroDePedido"));
-       emailCliente.setCellValueFactory(new PropertyValueFactory<Pedido, String>("email"));       
-       codArticulo.setCellValueFactory(new PropertyValueFactory<Pedido, String>("gastosDeEnvio"));
+       emailCliente.setCellValueFactory(new PropertyValueFactory<Pedido, Cliente>("cliente"));       
+       codArticulo.setCellValueFactory(new PropertyValueFactory<Pedido, Articulo>("articulo"));
        cantidad.setCellValueFactory(new PropertyValueFactory<Pedido, Integer>("cantidad"));
        fecha.setCellValueFactory(new PropertyValueFactory<Pedido, Timestamp>("fecha"));
        procesado.setCellValueFactory(new PropertyValueFactory<Pedido, Boolean>("procesado"));

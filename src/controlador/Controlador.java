@@ -269,6 +269,7 @@ public class Controlador  {
 
 
     public void agregarCliente(ActionEvent event) {
+        agregarClienteLabel.setText("");
         boolean creado;
         boolean existe;
         List parametros = new ArrayList();

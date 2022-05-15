@@ -54,7 +54,7 @@ public class MostrarPedidosEnviadosController implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
        numPedido.setCellValueFactory(new PropertyValueFactory<Pedido, Integer>("numeroDePedido"));
        emailCliente.setCellValueFactory(new PropertyValueFactory<Pedido, Cliente>("cliente"));       
-       codArticulo.setCellValueFactory(new PropertyValueFactory<Pedido, Articulo>("gastosDeEnvio"));
+       codArticulo.setCellValueFactory(new PropertyValueFactory<Pedido, Articulo>("articulo"));
        cantidad.setCellValueFactory(new PropertyValueFactory<Pedido, Integer>("cantidad"));
        fecha.setCellValueFactory(new PropertyValueFactory<Pedido, Timestamp>("fecha"));
        procesado.setCellValueFactory(new PropertyValueFactory<Pedido, Boolean>("procesado"));
